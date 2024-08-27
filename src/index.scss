@@ -12,10 +12,15 @@
   --color-magnolia: hsl(217, 100%, 97%);
   --color-alabaster: hsl(231, 100%, 99%);
   --color-white: hsl(0, 0%, 100%);
+  --color-black: hsl(0, 0%, 0%);
 
   --font-family: "Ubuntu", sans-serif;
   --font-size-normal: 62.5%;
   --font-size-small: 50%;
+
+  --font-weight-bold: 700;
+  --font-weight-semi-bold: 500;
+  --font-weight-regular: 300;
 }
 
 *,
@@ -34,4 +39,12 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-color: var(--color-magnolia);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
 }
