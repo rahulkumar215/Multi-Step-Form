@@ -1,0 +1,40 @@
+.btn {
+  padding: 1.4rem 2rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  width: fit-content;
+  height: fit-content;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.6rem;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-next {
+  grid-column: 2 / -1;
+  grid-row: 4 / -1;
+  justify-self: end;
+
+  background-color: var(--color-marine-blue);
+  color: var(--color-magnolia);
+
+  &:hover,
+  &:active {
+    background-color: var(--color-purplish-blue);
+  }
+}
+
+.btn-prev {
+  grid-column: 1 / span 1;
+  grid-row: 4 / -1;
+  justify-self: start;
+  font-size: 1.8rem;
+
+  background-color: transparent;
+  color: var(--color-cool-gray);
+
+  &:hover,
+  &:active {
+    color: var(--color-marine-blue);
+  }
+}
