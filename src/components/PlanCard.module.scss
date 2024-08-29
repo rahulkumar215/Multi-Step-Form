@@ -1,0 +1,51 @@
+.planCard {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-cool-gray);
+  height: fit-content;
+  position: relative;
+  cursor: pointer;
+  transition: var(--normal-transition);
+
+  &:hover,
+  &:active {
+    border: 1px solid var(--color-marine-blue);
+    background-color: var(--color-alabaster);
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-marine-blue);
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.6rem;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-cool-gray);
+    margin-bottom: 0.7rem;
+  }
+
+  h5 {
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-marine-blue);
+  }
+}
+
+.activeCard {
+  border: 1px solid var(--color-marine-blue);
+  background-color: var(--color-alabaster);
+}
+
+:global(.plans-icon) {
+  margin-bottom: 4.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
+}

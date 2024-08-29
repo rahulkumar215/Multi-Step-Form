@@ -1,0 +1,5 @@
+.addOnsContainer {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  row-gap: 1.9rem;
+}

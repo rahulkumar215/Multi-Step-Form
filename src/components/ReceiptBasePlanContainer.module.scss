@@ -1,0 +1,37 @@
+.basePlan {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  margin-bottom: 2.5rem;
+
+  h3 {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-marine-blue);
+  }
+
+  .link {
+    grid-column: 1 / span 1;
+    grid-row: 2 / -1;
+    color: var(--color-cool-gray);
+    font-weight: var(--font-weight-semi-bold);
+
+    transition: var(--normal-transition);
+
+    &:hover {
+      color: var(--color-purplish-blue);
+    }
+  }
+
+  h2 {
+    grid-column: 2 / -1;
+    grid-row: 1 / -1;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-marine-blue);
+    justify-self: end;
+  }
+}

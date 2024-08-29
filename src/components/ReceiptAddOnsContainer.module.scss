@@ -1,0 +1,28 @@
+.addOns {
+  display: grid;
+  align-items: center;
+
+  border-top: 1px solid rgba($color: #9699ab, $alpha: 0.2);
+  padding-top: 2.5rem;
+
+  .addOn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 1rem;
+
+    &:not(:last-child) {
+      padding-bottom: 1rem;
+    }
+
+    p {
+      color: var(--color-cool-gray);
+      font-weight: var(--font-weight-regular);
+    }
+
+    h4 {
+      color: var(--color-marine-blue);
+      font-weight: var(--font-weight-semi-bold);
+      justify-self: end;
+    }
+  }
+}

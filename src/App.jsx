@@ -5,21 +5,24 @@ import SubscriptionPlans from "./components/SubscriptionPlans";
 import AddOns from "./components/AddOns";
 import FinishUp from "./components/FinishUp";
 import Complete from "./components/Complete";
+import { FormProvider } from "./context/FormContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<Navigate to="personal-info" replace />} />
-          <Route path="personal-info" element={<PersonalInfo />} />
-          <Route path="subscription-plans" element={<SubscriptionPlans />} />
-          <Route path="add-ons" element={<AddOns />} />
-          <Route path="finish-up" element={<FinishUp />} />
-          <Route path="complete" element={<Complete />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <FormProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Navigate to="personal-info" replace />} />
+            <Route path="personal-info" element={<PersonalInfo />} />
+            <Route path="subscription-plans" element={<SubscriptionPlans />} />
+            <Route path="add-ons" element={<AddOns />} />
+            <Route path="finish-up" element={<FinishUp />} />
+            <Route path="complete" element={<Complete />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </FormProvider>
   );
 }
 

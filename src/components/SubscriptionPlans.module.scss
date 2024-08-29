@@ -1,0 +1,32 @@
+.subscriptionPlanContainer {
+  display: grid;
+  column-gap: 1.9rem;
+  row-gap: 2.9rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+
+  .planTags {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    background-color: var(--color-magnolia);
+    border-radius: 1rem;
+
+    h3 {
+      margin: 0 1.5rem;
+      font-size: 1.6rem;
+      font-weight: var(--font-weight-semi-bold);
+      color: var(--color-cool-gray);
+      transition: var(--normal-transform);
+    }
+
+    .activePlan {
+      color: var(--color-marine-blue);
+    }
+  }
+}

@@ -1,6 +1,7 @@
 .stepContainer {
   height: 100%;
   width: 100%;
+
   padding: 4rem 10rem;
 
   display: grid;
@@ -21,4 +22,10 @@
     color: var(--color-cool-gray);
     font-weight: var(--font-weight-regular);
   }
+}
+
+:global(.outlet) {
+  grid-column: 1 / -1;
+  height: 100%;
+  padding: 2rem 0;
 }
