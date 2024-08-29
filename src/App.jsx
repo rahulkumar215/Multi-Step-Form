@@ -6,20 +6,29 @@ import AddOns from "./components/AddOns";
 import FinishUp from "./components/FinishUp";
 import Complete from "./components/Complete";
 import { FormProvider } from "./context/FormContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
     <FormProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="personal-info" replace />} />
             <Route path="personal-info" element={<PersonalInfo />} />
             <Route path="subscription-plans" element={<SubscriptionPlans />} />
             <Route path="add-ons" element={<AddOns />} />
             <Route path="finish-up" element={<FinishUp />} />
-            <Route path="complete" element={<Complete />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </FormProvider>

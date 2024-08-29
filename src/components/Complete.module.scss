@@ -1,0 +1,27 @@
+.completeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 10rem;
+
+  .thankYouIcon {
+    width: 9rem;
+    height: 9rem;
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    color: var(--color-marine-blue);
+    margin-bottom: 2.5rem;
+    font-size: 4rem;
+  }
+
+  p {
+    color: var(--color-cool-gray);
+    line-height: 1.5;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}

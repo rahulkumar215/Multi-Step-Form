@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./StepContainer.module.scss";
 import Button from "./Button";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import Spinner from "./Spinner";
 import { useForm } from "../context/FormContext";
+import Complete from "./Complete";
 
 function StepContainer({ data }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
+  const navigate = useNavigate();
 
   const { handleSubmitPersonalInfoForm, setRunEffect } = useForm();
 
@@ -15,9 +18,12 @@ function StepContainer({ data }) {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
-      }, 250);
+      }, 500);
+      if (data.path !== "/finish-up" && isComplete) {
+        setIsComplete(false);
+      }
     },
-    [data]
+    [data, isComplete]
   );
 
   function handleSubmit(e) {
@@ -27,8 +33,20 @@ function StepContainer({ data }) {
     }
   }
 
+  function handleComplete(e) {
+    e.preventDefault();
+    navigate("/finish-up", {
+      replace: true,
+    });
+    setIsComplete(true);
+  }
+
   if (isLoading) {
     return <Spinner />;
+  }
+
+  if (isComplete && !isLoading) {
+    return <Complete />;
   }
 
   return (
@@ -55,7 +73,7 @@ function StepContainer({ data }) {
           Next Step
         </Button>
       ) : (
-        <Button path="/complete" className="btn-next">
+        <Button path="/complete" className="btn-next" onClick={handleComplete}>
           Confirm
         </Button>
       )}

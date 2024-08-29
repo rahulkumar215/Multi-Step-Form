@@ -1,20 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const FormContext = createContext();
 
 function FormProvider({ children }) {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
-
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
   const [runEffect, setRunEffect] = useState(false);
-
   const [addOns, setAddOns] = useState([]);
+
+  const hasFirstTimeOpened = !runEffect;
 
   const plans = [
     {
@@ -91,6 +89,7 @@ function FormProvider({ children }) {
         multiplier,
         tag,
         addOns,
+        hasFirstTimeOpened,
         setAddOns,
         setName,
         setEmail,
