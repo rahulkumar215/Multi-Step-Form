@@ -1,0 +1,11 @@
+.navBtnContainer {
+  grid-column: 2 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: end;
+
+  margin: 0 10rem;
+  margin-bottom: 4rem;
+}

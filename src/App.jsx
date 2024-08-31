@@ -4,7 +4,6 @@ import PersonalInfo from "./components/PersonalInfo";
 import SubscriptionPlans from "./components/SubscriptionPlans";
 import AddOns from "./components/AddOns";
 import FinishUp from "./components/FinishUp";
-import Complete from "./components/Complete";
 import { FormProvider } from "./context/FormContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import PageNotFound from "./components/PageNotFound";

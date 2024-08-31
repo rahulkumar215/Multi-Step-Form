@@ -1,6 +1,6 @@
 .container {
   width: 106.7rem;
-  height: 68rem;
+  min-height: 68rem;
   background-color: var(--color-white);
   margin: 2rem;
   box-shadow: 0px 4px 49px 0px rgba(0, 0, 0, 0.1);
@@ -8,6 +8,7 @@
   overflow: hidden;
   display: grid;
   padding: 2rem;
-  grid-template-columns: 31rem 1fr;
-  gap: 1rem;
+  grid-template-columns: 31rem repeat(2, 1fr);
+  grid-template-rows: 48.4rem 1fr;
+  column-gap: 1rem;
 }

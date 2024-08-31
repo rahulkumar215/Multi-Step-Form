@@ -25,6 +25,8 @@
   --normal-transition: all 0.2s ease;
 }
 
+$bg-largest: 75em; // 1200px
+
 *,
 *::before,
 *::after {
@@ -43,10 +45,13 @@ body {
   font-size: 1.6rem;
   background-color: var(--color-magnolia);
 
+  // display: grid;
+  // place-content: center;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
 }

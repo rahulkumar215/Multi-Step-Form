@@ -1,4 +1,6 @@
 .sidebarContainer {
+  grid-row: 1 / span 2;
+
   background: url("../assets/images/bg-sidebar-desktop.svg");
   background-repeat: no-repeat;
   background-size: cover;

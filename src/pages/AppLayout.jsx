@@ -1,8 +1,10 @@
 import "./AppLayout.scss";
 import Sidebar from "../components/Sidebar";
 import StepContainer from "../components/StepContainer";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
+import NavButtons from "../components/NavButtons";
+import { useForm } from "../context/FormContext";
 
 const data = [
   {
@@ -35,22 +37,62 @@ const data = [
 
 function AppLayout() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
   const [renderData, setRenderData] = useState(
     data.filter((obj) => obj.path.includes(pathname))
   );
 
-  useEffect(
-    function () {
-      setRenderData(data.filter((obj) => obj.path.includes(pathname))[0]);
-    },
-    [pathname]
-  );
+  // const { handleSubmitPersonalInfoForm, setRunEffect } = useForm();
+
+  // useEffect(
+  //   function () {
+  //     setIsLoading(true);
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //     }, 500);
+  //     if (data.path !== "/finish-up" && isComplete) {
+  //       setIsComplete(false);
+  //     }
+  //   },
+  //   [isComplete]
+  // );
+
+  // useEffect(
+  //   function () {
+  //     setRenderData(data.filter((obj) => obj.path.includes(pathname))[0]);
+  //   },
+  //   [pathname]
+  // );
+
+  function handleSubmit(e) {
+    if (data.nextpath === "/subscription-plans") {
+      // handleSubmitPersonalInfoForm(e);
+      // setRunEffect(true);
+    }
+  }
+
+  function handleComplete(e) {
+    e.preventDefault();
+    navigate("/finish-up", { replace: true });
+    setIsComplete(true);
+  }
 
   return (
     <div className="container">
       <Sidebar />
-      <StepContainer data={renderData} />
+      <StepContainer
+        data={renderData}
+        isLoading={isLoading}
+        isComplete={isComplete}
+      />
+      <NavButtons
+        data={renderData}
+        handleSubmit={handleSubmit}
+        handleComplete={handleComplete}
+      />
     </div>
   );
 }

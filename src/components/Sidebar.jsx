@@ -11,27 +11,27 @@ function Sidebar() {
     <div className={styles.sidebarContainer}>
       <Step
         number={1}
-        onClick={disableNavLink}
         path={"/personal-info"}
         heading="YOUR INFO"
+        onClick={disableNavLink}
       />
       <Step
         number={2}
-        onClick={disableNavLink}
         path={"/subscription-plans"}
         heading="SELECT PLAN"
+        onClick={disableNavLink}
       />
       <Step
         number={3}
-        onClick={disableNavLink}
         path={"/add-ons"}
         heading="ADD-ONS"
+        onClick={disableNavLink}
       />
       <Step
         number={4}
-        onClick={disableNavLink}
         path={"/finish-up"}
         heading="SUMMARY"
+        onClick={disableNavLink}
       />
     </div>
   );

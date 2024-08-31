@@ -6,8 +6,6 @@ function ProtectedRoute({ children }) {
   const { hasFirstTimeOpened } = useForm();
   const navigate = useNavigate();
 
-  console.log(hasFirstTimeOpened);
-
   useEffect(
     function () {
       if (hasFirstTimeOpened) navigate("/");
