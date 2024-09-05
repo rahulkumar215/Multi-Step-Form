@@ -1,13 +1,28 @@
+@import "../index.scss";
+
 .subscriptionPlanContainer {
   display: grid;
   column-gap: 1.9rem;
   row-gap: 2.9rem;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
   grid-template-rows: repeat(2, minmax(min-content, max-content));
+
+  @media only screen and (max-width: $bg-medium) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 1rem;
+  }
 
   .planTags {
     grid-column: 1 / -1;
     grid-row: 2 / -1;
+
+    @media only screen and (max-width: $bg-medium) {
+      grid-column: 1 / -1;
+      grid-row: 4 / -1;
+      height: 5rem;
+      align-self: end;
+    }
 
     display: grid;
     grid-template-columns: repeat(3, min-content);

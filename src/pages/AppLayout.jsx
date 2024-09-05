@@ -39,60 +39,56 @@ function AppLayout() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [renderData, setRenderData] = useState(
     data.filter((obj) => obj.path.includes(pathname))
   );
 
-  // const { handleSubmitPersonalInfoForm, setRunEffect } = useForm();
+  const { handleSubmitPersonalInfoForm, setRunEffect, resetState } = useForm();
 
-  // useEffect(
-  //   function () {
-  //     setIsLoading(true);
-  //     setTimeout(() => {
-  //       setIsLoading(false);
-  //     }, 500);
-  //     if (data.path !== "/finish-up" && isComplete) {
-  //       setIsComplete(false);
-  //     }
-  //   },
-  //   [isComplete]
-  // );
-
-  // useEffect(
-  //   function () {
-  //     setRenderData(data.filter((obj) => obj.path.includes(pathname))[0]);
-  //   },
-  //   [pathname]
-  // );
+  useEffect(
+    function () {
+      setRenderData(data.filter((obj) => obj.path.includes(pathname))[0]);
+      if (renderData.path !== "/finish-up" && isComplete) {
+        setIsComplete(false);
+      }
+    },
+    [pathname, renderData.path, isComplete]
+  );
 
   function handleSubmit(e) {
-    if (data.nextpath === "/subscription-plans") {
-      // handleSubmitPersonalInfoForm(e);
-      // setRunEffect(true);
+    if (renderData.nextpath === "/subscription-plans") {
+      handleSubmitPersonalInfoForm(e);
+      setRunEffect(true);
     }
   }
 
   function handleComplete(e) {
+    if (!handleSubmitPersonalInfoForm(e)) {
+      navigate("/personal-info", { replace: true });
+      return;
+    }
+
     e.preventDefault();
     navigate("/finish-up", { replace: true });
     setIsComplete(true);
+    setTimeout(() => {
+      resetState();
+      setRunEffect(false);
+    }, 5000);
   }
 
   return (
     <div className="container">
       <Sidebar />
-      <StepContainer
-        data={renderData}
-        isLoading={isLoading}
-        isComplete={isComplete}
-      />
-      <NavButtons
-        data={renderData}
-        handleSubmit={handleSubmit}
-        handleComplete={handleComplete}
-      />
+      <StepContainer data={renderData} isComplete={isComplete} />
+      {!isComplete && (
+        <NavButtons
+          data={renderData}
+          handleSubmit={handleSubmit}
+          handleComplete={handleComplete}
+        />
+      )}
     </div>
   );
 }

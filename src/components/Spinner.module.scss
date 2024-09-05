@@ -1,4 +1,7 @@
 .spinnerContainer {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+
   height: 100%;
   display: flex;
   align-items: center;

@@ -15,9 +15,9 @@ function InputContainer({
   }
 
   return (
-    <div className={styles.inputContainer}>
+    <div className={`${error ? styles.warning : ""} ${styles.inputContainer}`}>
       <label htmlFor="name">{label}</label>
-      <span className={error ? styles.warning : ""}>{error}</span>
+      <span>{error}</span>
       <input
         type={type}
         id={id}

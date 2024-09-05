@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 
 const FormContext = createContext();
 
@@ -11,8 +11,23 @@ function FormProvider({ children }) {
   const [phoneError, setPhoneError] = useState("");
   const [runEffect, setRunEffect] = useState(false);
   const [addOns, setAddOns] = useState([]);
+  const [isMonthlyPlan, setIsMonthlyPlan] = useState(true);
+  const [activeCard, setActiveCard] = useState("Arcade");
+  const [hasFirstTimeOpened, setHasFirstTimeOpened] = useState(true);
 
-  const hasFirstTimeOpened = !runEffect;
+  const resetState = useCallback(function resetState() {
+    setName("");
+    setNameError("");
+    setEmail("");
+    setEmailError("");
+    setPhone("");
+    setPhoneError("");
+    setRunEffect(false);
+    setAddOns([]);
+    setIsMonthlyPlan(true);
+    setActiveCard("Arcade");
+    setHasFirstTimeOpened(true);
+  }, []);
 
   const plans = [
     {
@@ -29,49 +44,66 @@ function FormProvider({ children }) {
     },
   ];
 
-  const [isMonthlyPlan, setIsMonthlyPlan] = useState(true);
-  const [activeCard, setActiveCard] = useState("Arcade");
   const multiplier = isMonthlyPlan ? 1 : 10;
   const tag = isMonthlyPlan ? "mo" : "yr";
 
   const validateEmail = (email) => {
-    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   };
 
   const validatePhone = (phone) => {
-    return /^\+1\s\d{3}\s\d{3}\s\d{3}$/.test(phone);
+    const phonePattern = /^\+1\s\d{3}\s\d{3}\s\d{3}$/;
+    return phonePattern.test(phone);
   };
 
-  function handleSubmitPersonalInfoForm(e) {
-    if (name.trim().length === 0) {
-      setNameError("This field is required");
-      e?.preventDefault();
-    } else {
-      setNameError("");
-    }
+  const validateName = (name) => {
+    const namePattern = /^[a-zA-Z\s]*$/;
+    return namePattern.test(name);
+  };
 
-    if (email.trim().length === 0) {
-      setEmailError("This field is required");
-      e?.preventDefault();
-    } else if (!validateEmail(email)) {
-      setEmailError("Email format is not valid");
-      e?.preventDefault();
-    } else {
-      setEmailError("");
-    }
+  const handleSubmitPersonalInfoForm = useCallback(
+    function handleSubmitPersonalInfoForm(e) {
+      let isValid = true;
 
-    if (phone.trim().length === 0) {
-      setPhoneError("This field is required");
-      e?.preventDefault();
-    } else if (!validatePhone(phone)) {
-      setPhoneError("Number format is not valid");
-      e?.preventDefault();
-    } else {
-      setPhoneError("");
-    }
-  }
+      if (name.trim().length === 0) {
+        setNameError("This field is required");
+        isValid = false;
+      } else if (!validateName(name)) {
+        setNameError("No special symbols allowed");
+        isValid = false;
+      } else {
+        setNameError("");
+      }
+
+      if (email.trim().length === 0) {
+        setEmailError("This field is required");
+        isValid = false;
+      } else if (!validateEmail(email)) {
+        setEmailError("Email format is not valid");
+        isValid = false;
+      } else {
+        setEmailError("");
+      }
+
+      if (phone.trim().length === 0) {
+        setPhoneError("This field is required");
+        isValid = false;
+      } else if (!validatePhone(phone)) {
+        setPhoneError("Number format is not valid");
+        isValid = false;
+      } else {
+        setPhoneError("");
+      }
+
+      if (!isValid) {
+        e?.preventDefault();
+      }
+
+      return isValid;
+    },
+    [email, name, phone]
+  );
 
   return (
     <FormContext.Provider
@@ -90,6 +122,7 @@ function FormProvider({ children }) {
         tag,
         addOns,
         hasFirstTimeOpened,
+        setHasFirstTimeOpened,
         setAddOns,
         setName,
         setEmail,
@@ -103,6 +136,7 @@ function FormProvider({ children }) {
         setRunEffect,
         setIsMonthlyPlan,
         setActiveCard,
+        resetState,
       }}
     >
       {children}

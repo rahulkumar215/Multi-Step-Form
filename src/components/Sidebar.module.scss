@@ -1,3 +1,5 @@
+@import "../index.scss";
+
 .sidebarContainer {
   grid-row: 1 / span 2;
 
@@ -8,4 +10,23 @@
   overflow: hidden;
 
   padding: 4rem 3.5rem;
+
+  @media only screen and (max-width: $bg-larger) {
+    border-radius: 0;
+    background-size: cover;
+    background-position-x: right;
+  }
+
+  @media only screen and (max-width: $bg-large) {
+    grid-column: 1 / -1;
+    grid-row: 1 / span 3;
+    background: url("../assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: repeat(4, min-content);
+    justify-content: center;
+    align-items: start;
+  }
 }

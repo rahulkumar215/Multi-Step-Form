@@ -1,0 +1,21 @@
+@import "../index.scss";
+
+.navBtnContainer {
+  grid-column: 2 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: end;
+
+  margin: 0 10rem;
+  margin-bottom: 4rem;
+
+  @media only screen and (max-width: $bg-large) {
+    grid-row: 10 / -1;
+    grid-column: 1 / -1;
+    background-color: var(--color-white);
+    margin: 0;
+    padding: 2rem 3rem;
+  }
+}

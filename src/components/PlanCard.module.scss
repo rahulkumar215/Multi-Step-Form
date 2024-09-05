@@ -1,3 +1,5 @@
+@import "../index.scss";
+
 .planCard {
   padding: 2rem;
   border-radius: 1rem;
@@ -6,6 +8,15 @@
   position: relative;
   cursor: pointer;
   transition: var(--normal-transition);
+
+  @media only screen and (max-width: $bg-medium) {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+  }
 
   &:hover,
   &:active {
@@ -30,12 +41,27 @@
     font-weight: var(--font-weight-regular);
     color: var(--color-cool-gray);
     margin-bottom: 0.7rem;
+
+    @media only screen and (max-width: $bg-medium) {
+      grid-column: 2 / -1;
+      margin-bottom: 0;
+    }
   }
 
   h5 {
     font-size: 1.4rem;
     font-weight: var(--font-weight-regular);
     color: var(--color-marine-blue);
+
+    @media only screen and (max-width: $bg-medium) {
+      grid-column: 3 / -1;
+      grid-row: 1 / -1;
+      width: fit-content;
+      background-color: var(--color-purplish-blue);
+      color: var(--color-white);
+      border-radius: 1rem;
+      padding: 0.5rem 1.5rem;
+    }
   }
 }
 
@@ -48,4 +74,10 @@
   margin-bottom: 4.5rem;
   width: 4.5rem;
   height: 4.5rem;
+
+  @media only screen and (max-width: $bg-medium) {
+    grid-row: 1 / -1;
+    margin-bottom: 0;
+    align-self: start;
+  }
 }

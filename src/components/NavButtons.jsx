@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./NavButton.module.scss";
+import styles from "./NavButtons.module.scss";
 import Button from "./Button";
 
 function NavButtons({ data, handleSubmit, handleComplete }) {

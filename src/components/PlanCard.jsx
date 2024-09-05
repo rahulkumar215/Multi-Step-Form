@@ -22,7 +22,7 @@ function PlanCard({ icon, price, name }) {
       <h4>
         ${price}/{tag}
       </h4>
-      {!isMonthlyPlan && <h5>2 month free</h5>}
+      {!isMonthlyPlan && <h5>2 months free</h5>}
     </label>
   );
 }

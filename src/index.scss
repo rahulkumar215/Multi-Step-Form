@@ -26,6 +26,9 @@
 }
 
 $bg-largest: 75em; // 1200px
+$bg-larger: 62.5em; // 1000px
+$bg-large: 56.25em; // 1200px
+$bg-medium: 37.5em; // 600px
 
 *,
 *::before,
@@ -45,13 +48,13 @@ body {
   font-size: 1.6rem;
   background-color: var(--color-magnolia);
 
-  // display: grid;
-  // place-content: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  // width: 100vw;
   height: 100vh;
+
+  @media only screen and (max-width: $bg-largest) {
+    padding: 2rem;
+  }
 }

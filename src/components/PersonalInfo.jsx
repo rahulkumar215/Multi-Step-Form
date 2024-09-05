@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./PersonalInfo.module.scss";
 import InputContainer from "./InputContainer";
 import { useForm } from "../context/FormContext";
-// import { useIsMount } from "../hooks/useIsMount";
 
 function PersonalInfo() {
-  // const isFirstMount = useIsMount();
   const {
     name,
     email,
@@ -26,7 +24,7 @@ function PersonalInfo() {
         handleSubmitPersonalInfoForm();
       }
     },
-    [runEffect, name, email, phone]
+    [runEffect, name, email, phone, handleSubmitPersonalInfoForm]
   );
 
   return (

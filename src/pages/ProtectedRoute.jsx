@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../context/FormContext";
 
 function ProtectedRoute({ children }) {
-  const { hasFirstTimeOpened } = useForm();
+  const { hasFirstTimeOpened, setHasFirstTimeOpened } = useForm();
   const navigate = useNavigate();
 
   useEffect(
     function () {
-      if (hasFirstTimeOpened) navigate("/");
+      if (hasFirstTimeOpened) {
+        navigate("/personal-info");
+        setHasFirstTimeOpened(false);
+      }
     },
-    [hasFirstTimeOpened]
+    [hasFirstTimeOpened, navigate, setHasFirstTimeOpened]
   );
 
   return children;

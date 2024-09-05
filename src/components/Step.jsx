@@ -1,13 +1,21 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Step.module.scss";
+import { useLocation, useNavigate } from "react-router";
 
-function Step({ number, onClick, path, heading }) {
+function Step({ number, path, heading }) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   return (
-    <div className={styles.stepContainer}>
-      <NavLink to={path} onClick={onClick} className={styles.link}>
+    <div
+      className={styles.stepContainer}
+      onClick={() => {
+        navigate(path);
+      }}
+    >
+      <span className={`${pathname === path ? "active" : ""} ${styles.link}`}>
         {number}
-      </NavLink>
+      </span>
       <p>STEP {number}</p>
       <h3>{heading}</h3>
     </div>
