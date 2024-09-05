@@ -3,10 +3,6 @@ import styles from "./Sidebar.module.scss";
 import Step from "./Step";
 
 function Sidebar() {
-  function disableNavLink(e) {
-    e.preventDefault();
-  }
-
   return (
     <div className={styles.sidebarContainer}>
       <Step number={1} path={"/personal-info"} heading="YOUR INFO" />
