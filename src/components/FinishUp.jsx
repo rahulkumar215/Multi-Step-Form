@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./FinishUp.module.scss";
 import { useForm } from "../context/FormContext";
-import { NavLink } from "react-router-dom";
 import ReceiptBasePlanContainer from "./ReceiptBasePlanContainer";
 import ReceiptAddOnsContainer from "./ReceiptAddOnsContainer";
 import Total from "./Total";
