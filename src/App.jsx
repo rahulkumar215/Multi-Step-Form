@@ -5,7 +5,7 @@ import SubscriptionPlans from "./components/SubscriptionPlans";
 import AddOns from "./components/AddOns";
 import FinishUp from "./components/FinishUp";
 import { FormProvider } from "./context/FormContext";
-import ProtectedRoute from "./pages/ProtectedRoute";
+// import ProtectedRoute from "./pages/ProtectedRoute";
 import PageNotFound from "./components/PageNotFound";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <AppLayout />
+              // </ProtectedRoute>
             }
           >
             <Route index element={<Navigate to="personal-info" replace />} />
